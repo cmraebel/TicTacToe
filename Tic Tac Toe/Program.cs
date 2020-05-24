@@ -71,7 +71,7 @@ namespace Tic_Tac_Toe
             // Inputs the player's move
             void PlayerMove()
             {
-                string move = Console.ReadLine();
+            
 
                 if (turn)
                 {
@@ -87,6 +87,8 @@ namespace Tic_Tac_Toe
                 // Sets the selected grid space to the player's mark
                 void Grid(string mark)
                 {
+                Start2:
+                    string move = Console.ReadLine();
                     switch (move.ToLower())
                     {
                         case "a1":
@@ -117,12 +119,10 @@ namespace Tic_Tac_Toe
                             gameBoard[8] = mark;
                             break;
                         default:
-                            break;
+                            Console.WriteLine("Incorrect format, enter move like this: a1");
+                            goto Start2;
                     }
                 }
-
-
-                
                 SetBoard();
             }
         }
