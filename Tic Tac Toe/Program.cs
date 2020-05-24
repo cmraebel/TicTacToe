@@ -8,6 +8,7 @@ namespace Tic_Tac_Toe
         {
             // Game variables
             bool turn = true;
+            bool win = false;
             string[] gameBoard = { " ", " ", " ", " ", " ", " ", " ", " ", " " };
 
             // Intro text
@@ -24,13 +25,78 @@ namespace Tic_Tac_Toe
             // Checks for an empty space on the board to see if the game should keep going
             for (int i = 0; i < gameBoard.Length; i++)
             {
-                if (gameBoard[i] == " ")
+                // Checking for a win
+                // top row
+                if (gameBoard[0] != " " && gameBoard[0] == gameBoard[1] && gameBoard[1] == gameBoard[2])
                 {
+                    win = true;
+                    Console.WriteLine(gameBoard[0] + " Wins!");
+                    goto Win;
+                }
+                // middle row
+                else if (gameBoard[3] != " " && gameBoard[3] == gameBoard[4] && gameBoard[4] == gameBoard[5])
+                {
+                    win = true;
+                    Console.WriteLine(gameBoard[3] + " Wins!");
+                    goto Win;
+                }
+                // bottom row
+                else if (gameBoard[6] != " " && gameBoard[6] == gameBoard[7] && gameBoard[7] == gameBoard[8])
+                {
+                    win = true;
+                    Console.WriteLine(gameBoard[6] + " Wins!");
+                    goto Win;
+                }
+                // left column
+                else if (gameBoard[0] != " " && gameBoard[0] == gameBoard[3] && gameBoard[3] == gameBoard[6])
+                {
+                    win = true;
+                    Console.WriteLine(gameBoard[0] + " Wins!");
+                    goto Win;
+                }
+                // middle column
+                else if (gameBoard[1] != " " && gameBoard[1] == gameBoard[4] && gameBoard[4] == gameBoard[7])
+                {
+                    win = true;
+                    Console.WriteLine(gameBoard[1] + " Wins!");
+                    goto Win;
+                }
+                // right column
+                else if (gameBoard[2] != " " && gameBoard[2] == gameBoard[5] && gameBoard[5] == gameBoard[8])
+                {
+                    win = true;
+                    Console.WriteLine(gameBoard[2] + " Wins!");
+                    goto Win;
+                }
+                // diagonal from top left
+                else if (gameBoard[0] != " " && gameBoard[0] == gameBoard[4] && gameBoard[4] == gameBoard[8])
+                {
+                    win = true;
+                    Console.WriteLine(gameBoard[0] + " Wins!");
+                    goto Win;
+                }
+                else if (gameBoard[2] != " " && gameBoard[2] == gameBoard[4] && gameBoard[4] == gameBoard[6])
+                {
+                    win = true;
+                    Console.WriteLine(gameBoard[2] + " Wins!");
+                    goto Win;
+                }
+                else if (gameBoard[i] == " ")
+                {
+                    if (turn)
+                    {
+                        Console.WriteLine("It is O's turn.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("It is X's turn.");
+                    }
                     PlayerMove();
                     goto Start;
                 }
             }
-
+            Console.WriteLine("Draw!");
+            Win:
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
 
@@ -49,30 +115,11 @@ namespace Tic_Tac_Toe
                     );
 
                 Console.WriteLine();
-
-
-                for (int i = 0; i < gameBoard.Length; i++)
-                {
-                    if (gameBoard[i] == " ")
-                    {
-                        if (turn)
-                        {
-                            Console.WriteLine("It is O's turn.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("It is X's turn.");
-                        }
-                        break;
-                    }
-                }
             }
 
             // Inputs the player's move
             void PlayerMove()
             {
-            
-
                 if (turn)
                 {
                     Grid("O");
@@ -85,6 +132,7 @@ namespace Tic_Tac_Toe
                 }
 
                 // Sets the selected grid space to the player's mark
+                //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 void Grid(string mark)
                 {
                 Start2:
@@ -92,37 +140,110 @@ namespace Tic_Tac_Toe
                     switch (move.ToLower())
                     {
                         case "a1":
-                            gameBoard[0] = mark;
+                            if (gameBoard[0] == " ")
+                            {
+                                gameBoard[0] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "a2":
-                            gameBoard[1] = mark;
+                            if (gameBoard[1] == " ")
+                            {
+                                gameBoard[1] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "a3":
-                            gameBoard[2] = mark;
+                            if (gameBoard[2] == " ")
+                            {
+                                gameBoard[2] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "b1":
-                            gameBoard[3] = mark;
+                            if (gameBoard[3] == " ")
+                            {
+                                gameBoard[3] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "b2":
-                            gameBoard[4] = mark;
+                            if (gameBoard[4] == " ")
+                            {
+                                gameBoard[4] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "b3":
-                            gameBoard[5] = mark;
+                            if (gameBoard[5] == " ")
+                            {
+                                gameBoard[5] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "c1":
-                            gameBoard[6] = mark;
+                            if (gameBoard[6] == " ")
+                            {
+                                gameBoard[6] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "c2":
-                            gameBoard[7] = mark;
+                            if (gameBoard[7] == " ")
+                            {
+                                gameBoard[7] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         case "c3":
-                            gameBoard[8] = mark;
+                            if (gameBoard[8] == " ")
+                            {
+                                gameBoard[8] = mark;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That space is taken, please try again");
+                                goto Start2;
+                            }
                             break;
                         default:
                             Console.WriteLine("Incorrect format, enter move like this: a1");
                             goto Start2;
                     }
                 }
+
                 SetBoard();
             }
         }
